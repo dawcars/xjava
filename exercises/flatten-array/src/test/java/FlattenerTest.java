@@ -1,12 +1,16 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 
-public final class FlattenerTest {
+/*
+ * version: 1.1.0
+ */
+public class FlattenerTest {
 
     private Flattener flattener;
 
@@ -15,6 +19,18 @@ public final class FlattenerTest {
         flattener = new Flattener();
     }
 
+    @Test
+    public void testFlatListIsPreserved() {
+        assertEquals(
+          asList(0, '1', "two"),
+            flattener.flatten(
+              asList(
+                0,
+                '1',
+                "two")));
+    }
+
+    @Ignore("Remove to run test")
     @Test
     public void testASingleLevelOfNestingWithNoNulls() {
         assertEquals(
@@ -32,6 +48,7 @@ public final class FlattenerTest {
               8)));
     }
 
+    @Ignore("Remove to run test")
     @Test
     public void testFiveLevelsOfNestingWithNoNulls() {
         assertEquals(
@@ -54,6 +71,7 @@ public final class FlattenerTest {
               "-2")));
     }
 
+    @Ignore("Remove to run test")
     @Test
     public void testSixLevelsOfNestingWithNoNulls() {
         assertEquals(
@@ -76,6 +94,7 @@ public final class FlattenerTest {
               "8")));
     }
 
+    @Ignore("Remove to run test")
     @Test
     public void testSixLevelsOfNestingWithNulls() {
         assertEquals(
@@ -99,6 +118,7 @@ public final class FlattenerTest {
               "negative two")));
     }
 
+    @Ignore("Remove to run test")
     @Test
     public void testNestedListsFullOfNullsOnly() {
         assertEquals(
